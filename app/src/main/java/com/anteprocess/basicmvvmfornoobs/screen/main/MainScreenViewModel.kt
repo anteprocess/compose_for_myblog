@@ -1,14 +1,17 @@
 package com.anteprocess.basicmvvmfornoobs.screen.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.anteprocess.basicmvvmfornoobs.screen.main.usecase.CounterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainScreenViewModel @Inject constructor(): ViewModel() {
+class MainScreenViewModel @Inject constructor( private val counterUseCase: CounterUseCase): ViewModel() {
 
     // State is maintained using StateFlow
     private val _state = MutableStateFlow(MainScreenState.initValue)
@@ -24,15 +27,17 @@ class MainScreenViewModel @Inject constructor(): ViewModel() {
 
     // Process events sent from the view
     fun onEvent(event: MainViewEvent) {
-        when (event) {
-            is OnClickCountUpEvent -> onClickCountUpEvent()
+        viewModelScope.launch {
+            when (event) {
+                is OnClickCountUpEvent -> onClickCountUpEvent()
+            }
         }
     }
 
     // Handle the OnClickCountUpEvent
-    private fun onClickCountUpEvent() {
-        val oldState = currentState()
-        val newState = oldState.copy(counter = oldState.counter + 1)
-        updateState(newState)
+    private suspend fun onClickCountUpEvent() {
+        counterUseCase.incrementCounter()
+        val newCounterValue = counterUseCase.getCounter()
+        updateState(currentState().copy(counter = newCounterValue))
     }
 }
