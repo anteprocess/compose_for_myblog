@@ -2,6 +2,7 @@
 This repo is for my Medium blog, where I'll be sharing insightful examples and tutorials.
 
 # 1. Basic MVVM for Beginners
+https://medium.com/@anteprocess/android-compose-create-a-simple-mvvm-project-with-basic-four-layers-776b586d00af
 
 Welcome to Basic MVVM for Noobs! This project aims to provide a simple example of the Model-View-ViewModel (MVVM) architecture pattern for beginners.
 
