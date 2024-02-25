@@ -1,13 +1,15 @@
 # Compose Related Tips and Sample projects
 This repo is for my Medium blog, where I'll be sharing insightful examples and tutorials.
 
-# 1. Basic MVVM for Noobs
+# 1. Basic MVVM for Beginners
 
 Welcome to Basic MVVM for Noobs! This project aims to provide a simple example of the Model-View-ViewModel (MVVM) architecture pattern for beginners.
 
 ## Overview
 
 This project demonstrates the implementation of MVVM architecture in an Android app using Kotlin and Jetpack Compose. It features a basic counter functionality where users can increment a counter displayed on the screen.
+
+  ![alt text](https://github.com/anteprocess/compose_for_myblog/blob/main/screenshots/sample.png?raw=true)
 
 ## Features
 
